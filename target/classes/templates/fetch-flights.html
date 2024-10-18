@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Manage Flights</title><!--327-->
+</head>
+<body>
+	<th:block th:insert="~{message.html}"></th:block>
+
+	<h1 align="center"
+		th:text="${session.agency.name+' Agency Flight Details'}"></h1>
+	<div align="center">
+		<table border="1">
+			<tr>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Number of Seats</th>
+				<th>Flight Number</th>
+				<th>Flight Image</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+
+			<tr th:each="flight:${flights}"><!--328 continuation of 324 from agency controller-->
+				<td th:text="${flight.name}"></td>
+				<td><span th:if="${flight.ac}">Buiseness-Class</span> <span th:if="${!flight.ac}">First-class</span>
+					<span th:if="${flight.sleeper}">Premium-Economy</span> <span
+					th:if="${!flight.sleeper}">Economy</span></td>
+				<td th:text="${flight.seat}"></td>
+				<td th:text="${flight.regno}">Flight Number</td>
+				<td><img th:alt="${flight.name}" th:src="${flight.imageLink}"
+					height="100px" width="100px"></td>
+				<td><a th:href="'/agency/edit-flight/'+${flight.id}"><button>Edit</button></a></td><!--343-->
+				<td><a th:href="'/agency/delete-flight/'+${flight.id}"><button>Delete</button></a></td><!--329-->
+			</tr>
+
+		</table>
+
+		<br>
+		<br> <a href="/"><button>Back</button></a>
+	</div>
+</body>
+</html>

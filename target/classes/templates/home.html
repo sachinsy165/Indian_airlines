@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:insert="~{header.html}"></th:block>
+<title>Airlines - Home</title>     <!--2nd-->
+<link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+	<th:block th:insert="~{navbar.html}"></th:block> <!--3rd-->
+	<th:block th:insert="~{message.html}"></th:block>
+
+	<div class="container mt-4">
+		<h2>Welcome to Airliness.com ticket Booking Site</h2>
+	</div>
+
+	<th:block th:insert="~{footer.html}"></th:block>  <!--1st-->
+</body>
+</html>

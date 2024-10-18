@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Edit Flight</title>
+</head>
+<body>
+	<div>
+		<form action="/agency/edit-flight" method="post"
+			enctype="multipart/form-data" th:object="${flight}"> <!--355-->
+			<input type="hidden" name="id" th:field="*{id}">
+			<div class="form-editflight">
+				<label for="name">Flight| Name</label> <input type="text" name="name" th:field="*{name}">
+				
+			</div>
+			<label>Flight type</label>
+			<div class="form-editflight">
+				<input type="radio" name="ac" th:field="*{ac}" value="true" id="ac"><label
+					for="ac">Buiseness-Class</label> 
+				<input type="radio" name="ac" value="false"
+					id="nonac" th:field="*{ac}"><label for="nonac">First-class</label>
+			</div>
+			<div class="form-editflight">
+				<input type="radio" name="sleeper" value="true" id="acsleeper" th:field="*{sleeper}"><label
+					for="acsleeper">Premium-Economy</label> <input type="radio" name="sleeper"
+					value="false" id="nonsleeper" th:field="*{sleeper}"><label for="nonsleeper">Economy</label>
+			</div>
+			<div class="form-editflight">
+				<label for="noseats">Enter Number of seats</label> <input
+					type="number" name="seat" th:field="*{seat}" placeholder="Enter number of seats"
+					id="noseats">
+			</div>
+			<div class="form-editflight">
+				<label for="regno">Flight number</label> <input type="text"
+					name="regno" th:field="*{regno}" placeholder="KA28AK4444">
+			</div>
+			<div class="form-editbus">
+				<label for="image">Image</label> <input type="file" name="image">
+				<img th:alt="${flight.name}" th:src="*{imageLink}"
+					height="100px" width="100px">
+			</div>
+			<a href="/agency/manage-bus"><button type="button">Back</button></a>
+			<button>Update</button><!--356-->
+		</form>
+	</div>
+</body>
+</html>

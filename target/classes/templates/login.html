@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:insert="~{header.html}"></th:block>
+<title>Airlines - Login</title>   <!--128   and 461-->
+<link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+	<th:block th:insert="~{navbar.html}"></th:block>
+	<th:block th:insert="~{message.html}"></th:block>
+	<div class="container">
+		<h2>Login</h2>
+		<form action="/login" method="post">
+			<div class="form-group">
+				<label for="email">Email or Phone:</label> <input type="text"
+					class="form-control" id="email" name="email-phone"
+					placeholder="Enter your email / phone" required>
+			</div>
+			<div class="form-group">
+				<label for="password">Password:</label> <input type="password"
+					class="form-control" id="password" name="password"
+					placeholder="Enter your password" required>
+			</div>
+			<div class="d-flex justify-content-between align-items-center">
+				<a href="/" class="btn btn-secondary">Back</a>
+				<button type="submit" class="btn btn-success">Login</button>
+			</div>
+		</form>
+	</div>
+	<th:block th:insert="~{footer.html}"></th:block>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">   
+<head>          
+<meta charset="UTF-8">
+<title>Add Flight</title>
+</head>
+<body>
+	<div>
+		<form action="/agency/add-flight" method="post" th:object="${flight}" 
+			enctype="multipart/form-data">   <!--176-->
+			<div class="form-add-flight">
+				<label for="name">Flight_Name</label> <input type="text"
+					name="name">
+			</div>
+			<label>Flight type</label>
+			<div class="form-add-flight">
+				<input type="radio" name="ac" value="true" id="ac"><label
+					for="ac">Buiseness-Class</label> <input type="radio" name="ac" value="false"
+					id="nonac"><label for="nonac">First-class</label>
+			</div>
+			<div class="form-add-flight">
+				<input type="radio" name="sleeper" value="true" id="acsleeper"><label
+					for="acsleeper">Premium-Economy</label> <input type="radio" name="sleeper"
+					value="false" id="nonsleeper"><label for="nonsleeper">Economy</label>
+			</div>
+			<div class="form-add-flight">
+				<label for="noseats">Enter Number of seats</label> <input
+					type="number" name="seat" placeholder="Enter number of seats"
+					id="noseats">
+			</div>
+			<div class="form-add-flight">
+				<label for="regno">Flight number</label> <input type="text"
+					name="regno" placeholder="KA28AK4444">
+			</div>
+			<div class="form-add-flight">
+				<label for="image">Image</label> <input type="file" name="image">
+			</div>
+			<a href="/"><button type="button">Back</button></a>
+			<button>ADD</button>
+		</form>
+	</div>
+</body>
+</html>
