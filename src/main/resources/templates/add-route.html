@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add Route</title>
+</head>
+<body>  <!--209-->
+	<div>
+		<form action="/agency/add-route" method="post">  <!--210-->
+			<div>
+				<label>Select Flight</label> <select name="flight.id" required="required">  <!--211-->
+					<option selected="selected" disabled="disabled">Select One
+						Flight</option>
+					<option th:each="flight:${flights}" th:value="${flight.id}"
+						th:text="${flight.name}"></option><!--212  continuation of flights 208-->
+				</select>
+			</div>
+
+			<div id="stations"> <!--213 everything we are taking input from here inside attributes like name,time,price-->
+				<div>
+					<label>From:</label><br> <input type="text"
+						placeholder="Enter Source Stop_over" name="stations[0].name"><!--216-->
+					<input type="time" name="stations[0].time"><!--217-->
+				</div>
+				<div>
+					<label>To:</label><br> <input type="text"
+						name="stations[1].name" placeholder="Enter Stop_over"> <input
+						type="text" name="stations[1].price"
+						placeholder="Enter Ticket Price"> <input type="time"
+						name="stations[1].time"><!--218-->
+				</div>
+			</div>
+			<button type="button" onclick="addStation()">Add Stop_over</button><!--219-->
+
+			<div> <!--221-->
+				<label>Select Days : </label> <input type="checkbox" name="monday"
+					value="true">Monday <input type="checkbox" name="tuesday"
+					value="true">TuesDay <input type="checkbox"
+					name="wednesday" value="true">Wednesday <input
+					type="checkbox" name="thursday" value="true">Thursday <input
+					type="checkbox" name="friday" value="true">Friday <input
+					type="checkbox" name="saturday" value="true">Saturday <input
+					type="checkbox" name="sunday" value="true">Sunday
+			</div>
+
+			<button>Add Route</button><a href="/"><button type="button">Back</button></a>
+		</form>
+	</div>
+
+                              <!--220-->
+	<script type="text/javascript">
+		function addStation() {
+			var stations = document.getElementById('stations'); 
+
+			var stationCount = stations.children.length;
+
+			var newStationDiv = document.createElement('div');
+			newStationDiv.innerHTML = `
+	                <div>
+	                    <label>Mid Stop_Over:</label><br>
+	                    <input type="text" name="stations[${stationCount}].name" placeholder="Enter Mid Stop_Over" required>
+	                    <input type="text" name="stations[${stationCount}].price" placeholder="Enter Ticket Price" required>
+	                    <input type="time" name="stations[${stationCount}].time">
+	                    <button type="button" onclick="removeStation(this)">Remove Stop_over</button>
+	                </div>
+	            `;
+
+			stations.appendChild(newStationDiv);
+		}
+
+		function removeStation(button) {
+			var stationDiv = button.parentNode;
+			stationDiv.parentNode.removeChild(stationDiv);
+		}
+	</script>	
+</body>
+</html>

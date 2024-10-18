@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+	<a class="navbar-brand" href="/">Airlines</a>  <!--2nd if i use /as url every respone will come here only-->
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="/book-flight">Book Flight</a></li><!--481-->
+		</ul>
+		<ul class="navbar-nav ml-auto">
+
+			<th:block th:if="${session.customer==null && session.agency==null}">
+				<li class="nav-item"><a class="nav-link" href="/login">Login</a></li><!--458  continuation of 445-->
+				<li class="nav-item"><a class="nav-link" href="/signup">Sign
+						Up</a></li>    <!--4th-->
+			</th:block>
+
+			<th:block th:if="${session.customer}">
+				<li class="nav-item"><a class="nav-link" href="/customer/view-bookings">View
+						Previous Bookings</a></li> <!--552-->
+				<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+			</th:block>
+
+			<th:block th:if="${session.agency}">
+				<li class="nav-item"><a class="nav-link" href="/agency/add-flight">Add
+						Flight</a></li><!--172-->
+				<li class="nav-item"><a class="nav-link" href="/agency/add-route">Add
+						Airway</a></li><!--199-->
+				<li class="nav-item"><a class="nav-link" href="/agency/manage-flight">Manage
+						Flight</a></li><!--314  and  372-->
+				<li class="nav-item"><a class="nav-link" href="/agency/manage-route">Manage
+						Routes</a></li><!--246-->
+				<li class="nav-item"><a class="nav-link" href="/agency/view-customers">View
+						Customers</a></li>
+				<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li> <!--374-->
+			</th:block>
+
+		</ul>
+	</div>
+</nav>
